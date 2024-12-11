@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica No. 2</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>CALCULADORA DE RFC Y SALARIO NETO MENSUAL Y ANUAL</h1>
+
+<!-- Inicio del formulario -->
+<label>
+    Nombre:
+    <!-- Entrada de datos -->
+    <input type="text" id="nombre" required><br><br>
+    <!-- Uso de required para que sea campo obligatorio -->
+    Segundo Nombre:
+    <input type="text" id="Segundo_Nombre" placeholder="Opcional"><br><br>
+    Apellidos(Introduce en orden tus apellidos):
+    <input type="text" id="Apellidos" placeholder="Paterno Materno" required><br><br>
+    <!-- El tipo es date para fechas  DD/MM/YYYY-->
+    Fecha de Nacimiento:
+    <input type="date" id="fecha_Nacimiento" required><br><br>
+    Sueldo Bruto Mensual:
+    <input type="number" id="Sueldo" placeholder="$000.00" required><br><br>
+
+    <!-- Boton para calcular el RFC-->
+    <button onclick="Calcular_RFC()" id="BotonCalcularRFC">Calcular RFC</button><br><br>
+    <!-- Boton para calcular el salario neto mensual-->
+    <button onclick="Calcular_SalarioNetoM()" id="BotonCalcularISRMensual" >Calcular Salario Neto Mensual</button><br><br>
+    <!-- Boton para calcular el salario neto anual-->
+    <button onclick="Calcular_SalarioNetoA()" id="BotonCalcularISRAnual">Calcular Salario Neto Anual</button>
+</label>
+
+<h2 id="textoRFC">RFC</h2>
+<h2 id="resultadoMensual">Sueldo Neto Mensual</h2>
+<h2 id="resultadoAnual">Sueldo Neto Anual</h2>
+
+<!-- Tablas del ISR mensual y anual  -->
+
+<h2>Tarifa Mensual del ISR 2024</h2>
+<table>
+    <tr>
+        <th>Límite Inferior ($)</th>
+        <th>Límite Superior ($)</th>
+        <th>Cuota Fija</th>
+        <th>% sobre excedente límite inferior</th>
+    </tr>
+    <tr>
+        <td>0.01</td>
+        <td>746.04</td>
+        <td>0.00</td>
+        <td>1.92</td>
+    </tr>
+    <tr>
+        <td>746.05</td>
+        <td>6,332.05</td>
+        <td>14.32</td>
+        <td>6.40</td>
+    </tr>
+    <tr>
+        <td>6,332.06</td>
+        <td>11,128.01</td>
+        <td>371.83</td>
+        <td>10.88</td>
+    </tr>
+    <tr>
+        <td>11,128.02</td>
+        <td>12,935.82</td>
+        <td>893.63</td>
+        <td>16.00</td>
+    </tr>
+    <tr>
+        <td>12,935.83</td>
+        <td>15,487.71</td>
+        <td>1,182.88</td>
+        <td>17.92</td>
+    </tr>
+    <tr>
+        <td>15,487.72</td>
+        <td>31,236.49</td>
+        <td>1,640.18</td>
+        <td>21.36</td>
+    </tr>
+    <tr>
+        <td>31,236.50</td>
+        <td>49,233.00</td>
+        <td>5,004.12</td>
+        <td>23.52</td>
+    </tr>
+    <tr>
+        <td>49,233.01</td>
+        <td>93,993.90</td>
+        <td>9,236.89</td>
+        <td>30.00</td>
+    </tr>
+    <tr>
+        <td>93,993.91</td>
+        <td>125,325.20</td>
+        <td>22,665.17</td>
+        <td>32.00</td>
+    </tr>
+    <tr>
+        <td>125,325.21</td>
+        <td>375,975.61</td>
+        <td>32,691.18</td>
+        <td>34.00</td>
+    </tr>
+    <tr>
+        <td>375,975.62</td>
+        <td>En adelante</td>
+        <td>117,912.32</td>
+        <td>35.00</td>
+    </tr>
+</table>
+
+<h2>Tarifa Anual del ISR 2024</h2>
+<table>
+    <tr>
+        <th>Límite Inferior ($)</th>
+        <th>Límite Superior ($)</th>
+        <th>Cuota Fija</th>
+        <th>% sobre excedente límite inferior</th>
+    </tr>
+    <tr>
+        <td>0.01</td>
+        <td>8,952.49</td>
+        <td>0.00</td>
+        <td>1.92</td>
+    </tr>
+    <tr>
+        <td>8,952.50</td>
+        <td>75,984.55</td>
+        <td>171.88</td>
+        <td>6.40</td>
+    </tr>
+    <tr>
+        <td>75,984.56</td>
+        <td>133,536.07</td>
+        <td>4,461.94</td>
+        <td>10.88</td>
+    </tr>
+    <tr>
+        <td>133,536.08</td>
+        <td>155,229.80</td>
+        <td>10,723.55</td>
+        <td>16.00</td>
+    </tr>
+    <tr>
+        <td>155,229.81</td>
+        <td>185,852.57</td>
+        <td>14,194.54</td>
+        <td>17.92</td>
+    </tr>
+    <tr>
+        <td>185,852.58</td>
+        <td>374,837.88</td>
+        <td>19,682.13</td>
+        <td>21.36</td>
+    </tr>
+    <tr>
+        <td>374,837.89</td>
+        <td>590,795.99</td>
+        <td>60,049.40</td>
+        <td>23.52</td>
+    </tr>
+    <tr>
+        <td>590,796.00</td>
+        <td>1,127,926.84</td>
+        <td>110,842.74</td>
+        <td>30.00</td>
+    </tr>
+    <tr>
+        <td>1,127,926.85</td>
+        <td>1,503,902.46</td>
+        <td>271,981.99</td>
+        <td>32.00</td>
+    </tr>
+    <tr>
+        <td>1,503,902.47</td>
+        <td>4,511,707.37</td>
+        <td>392,294.17</td>
+        <td>34.00</td>
+    </tr>
+    <tr>
+        <td>4,511,707.38</td>
+        <td>En adelante</td>
+        <td>1,414,947.85</td>
+        <td>35.00</td>
+    </tr>
+</table>
+
+
+<!-- Se agrega el enlace para el funcionamiento de las funciones js  -->
+<script src="js/index.js"></script>
+</body>
+</html>
